@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledButton = styled.button`
+const StyledButton = styled.a`
   display: grid;
   grid-template-columns: repeat(2, auto);
   align-items: center;

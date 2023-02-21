@@ -6,5 +6,7 @@ import { DefaultButton } from "./DefaultButton/DefaultButton";
 import { Form } from "./Form/Form";
 import { Subtitle } from "./Subtitle/Subtitle";
 import { Separator } from "./Separator/Separator";
+import { Popup } from "./Popup/Popup";
+import { Events } from "./Events/Events";
 
-export { MainPage, Timer, Title, Button, Form, Subtitle, DefaultButton, Separator };
+export { MainPage, Timer, Title, Button, Form, Subtitle, DefaultButton, Separator, Popup, Events };

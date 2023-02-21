@@ -37,11 +37,20 @@ const StyledInput = styled.input`
     color: rgba(0, 0, 0, 0.6);
   }
 
+  &:focus-visible {
+    outline: none;
+  }
+
   @media (max-width: 768px) {
     padding: 10px 54px 10px 20px;
 
     font-size: 14px;
   }
+`;
+const ErrorMessage = styled.p`
+  font-size: 14px;
+
+  color: #df2224;
 `;
 const StyledButton = styled.button`
   position: absolute;
@@ -73,4 +82,4 @@ const StyledButton = styled.button`
   }
 `;
 
-export { Container, StyledForm, StyledInput, StyledButton };
+export { Container, StyledForm, StyledInput, StyledButton, ErrorMessage };

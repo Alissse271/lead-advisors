@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledSubtitle = styled.h1`
+const StyledSubtitle = styled.h3`
   font-weight: 400;
   font-size: 18px;
   line-height: 150%;

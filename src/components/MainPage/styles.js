@@ -9,6 +9,7 @@ import { Subtitle } from "../Subtitle/Subtitle";
 import { Title } from "../Title/Title";
 import { Timer } from "../Timer/Timer";
 import { Button } from "../Button/Button";
+import { motion } from "framer-motion";
 
 const StyledMainPage = styled.div`
   height: 100vh;
@@ -41,6 +42,11 @@ const Container = styled.div`
   @media (max-width: 375px) {
     padding-top: 80px;
   }
+`;
+const MotionContainer = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 const StyledTitle = styled(Title)`
   padding-top: 92px;
@@ -75,6 +81,7 @@ const StyledTimer = styled(Timer)`
   }
 `;
 const StyledButton = styled(Button)`
+  max-width: 240px;
   margin-bottom: 156px;
 
   @media (max-width: 568px) {
@@ -83,6 +90,10 @@ const StyledButton = styled(Button)`
 `;
 
 const EventsBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   margin-top: 110px;
 
   @media (max-width: 1280px) {
@@ -103,4 +114,5 @@ export {
   StyledTimer,
   InfoText,
   StyledButton,
+  MotionContainer,
 };
