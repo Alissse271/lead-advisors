@@ -13,8 +13,14 @@ import {
 import { Separator, Title, Events } from "../../components";
 import { LogoIcon } from "../../assets";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 
 export const MainPage = () => {
+  const ref = useRef(null);
+
+  const handleClick = () => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <StyledMainPage>
       <Wrapper>
@@ -52,9 +58,9 @@ export const MainPage = () => {
             <StyledButton type="button" label="Go to the event" />
           </MotionContainer>
         </Container>
-        <Separator />
+        <Separator onClick={handleClick} />
       </Wrapper>
-      <EventsBlock>
+      <EventsBlock ref={ref}>
         <Title label="All events" />
         <Events />
       </EventsBlock>

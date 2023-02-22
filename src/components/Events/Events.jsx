@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import {
   StyledEvents,
@@ -14,7 +14,7 @@ import {
   EventTitle,
 } from "./styles";
 
-export const defaultFAQs = [
+export const eventsCollection = [
   {
     event: {
       number: "01",
@@ -105,72 +105,60 @@ export const defaultFAQs = [
   },
 ];
 
-const Disclosure = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Event = (props) => {
+  const { title, body, i, expanded, setExpanded } = props;
+  const isOpen = i === expanded;
 
   return (
-    <StyledEvent onClick={() => setIsOpen((prev) => !prev)}>
-      <ButtonContainer>
-        <StyledButton aria-controls={props.title} aria-expanded={isOpen}>
-          <Number>{props.title.number}</Number>
-          <EventName>{props.title.name}</EventName>
+    <StyledEvent>
+      <ButtonContainer initial={false} onClick={() => setExpanded(isOpen ? false : i)}>
+        <StyledButton aria-controls={title} aria-expanded={isOpen}>
+          <Number>{title.number}</Number>
+          <EventName>{title.name}</EventName>
         </StyledButton>
       </ButtonContainer>
-      <motion.div
-        id={props.title}
-        initial={false}
-        animate={
-          isOpen
-            ? {
-                height: "auto",
-                opacity: 1,
-                display: "block",
-                transition: {
-                  height: {
-                    duration: 0.4,
-                  },
-                  opacity: {
-                    duration: 0.25,
-                    delay: 0.15,
-                  },
-                },
-              }
-            : {
-                height: 0,
-                opacity: 0,
-                transition: {
-                  height: {
-                    duration: 0.4,
-                  },
-                  opacity: {
-                    duration: 0.25,
-                  },
-                },
-                transitionEnd: {
-                  display: "none",
-                },
-              }
-        }
-      >
-        <ImageContainer>
-          <InfoContainer>
-            <EventTitle>{props.body.name}</EventTitle>
-            <StyledDate>{props.body.date}</StyledDate>
-            <StyledLink href={props.body.url} target="_blank">
-              More information
-            </StyledLink>
-          </InfoContainer>
-        </ImageContainer>
-      </motion.div>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            id={title}
+            initial="collapsed"
+            animate="open"
+            exit="collapsed"
+            variants={{
+              open: { opacity: 1, height: "auto" },
+              collapsed: { opacity: 0, height: 0 },
+            }}
+            transition={{ duration: 1.2, ease: [0.04, 0.62, 0.23, 0.98] }}
+          >
+            <ImageContainer>
+              <InfoContainer>
+                <EventTitle>{body.name}</EventTitle>
+                <StyledDate>{body.date}</StyledDate>
+                <StyledLink href={body.url} target="_blank">
+                  More information
+                </StyledLink>
+              </InfoContainer>
+            </ImageContainer>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </StyledEvent>
   );
 };
 
 export const Events = () => {
+  const [expanded, setExpanded] = useState(0);
   return (
     <StyledEvents>
-      {defaultFAQs.map((faq, i) => (
-        <Disclosure key={i} title={faq.event} body={faq.description} />
+      {eventsCollection.map((eventItem, i) => (
+        <Event
+          i={eventItem.event.number}
+          key={i}
+          title={eventItem.event}
+          body={eventItem.description}
+          expanded={expanded}
+          setExpanded={setExpanded}
+        />
       ))}
     </StyledEvents>
   );

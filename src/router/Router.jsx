@@ -3,4 +3,5 @@ import { MainPage } from "../components";
 
 export const Router = createBrowserRouter(
   createRoutesFromElements(<Route path="/" element={<MainPage />}></Route>),
+  { basename: "/lead-advisors" },
 );

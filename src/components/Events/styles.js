@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import eventImage from "../../assets/images/accordion-image.png";
+import { motion } from "framer-motion";
 
 const StyledEvents = styled.div`
   max-width: 1440px;
@@ -18,7 +19,7 @@ const StyledEvent = styled.div`
 
   border: 2px solid #fff;
 `;
-const ButtonContainer = styled.div`
+const ButtonContainer = styled(motion.div)`
   padding: 0 40px 26px 40px;
 
   @media (max-width: 425px) {
