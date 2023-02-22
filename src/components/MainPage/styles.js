@@ -11,7 +11,7 @@ import { Timer } from "../Timer/Timer";
 import { Button } from "../Button/Button";
 import { motion } from "framer-motion";
 
-const StyledMainPage = styled.div`
+const StyledMainPage = styled(motion.div)`
   height: 100vh;
   background: left top no-repeat url(${spotLeft}), right top no-repeat url(${spotRight}), #fff;
 

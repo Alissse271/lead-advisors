@@ -22,7 +22,11 @@ export const MainPage = () => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
   return (
-    <StyledMainPage>
+    <StyledMainPage
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0, duration: 1 }}
+    >
       <Wrapper>
         <Container>
           <MotionContainer
